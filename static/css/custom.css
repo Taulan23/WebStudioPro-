@@ -1,0 +1,149 @@
+/* Add any custom styles here */
+body {
+    padding-top: 20px;
+    background: linear-gradient(45deg, #f3f3f3, #e6e6e6);
+}
+
+.content-container {
+    margin-top: 20px;
+}
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-img-top {
+    transition: transform 0.3s;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Cool animation for content items */
+.animate__fadeInUp,
+.animate__fadeInLeft,
+.animate__fadeInRight {
+    animation-duration: 0.8s;
+}
+
+/* Staggered animation for multiple items */
+.row > div:nth-child(1) { animation-delay: 0.1s; }
+.row > div:nth-child(2) { animation-delay: 0.2s; }
+.row > div:nth-child(3) { animation-delay: 0.3s; }
+.row > div:nth-child(4) { animation-delay: 0.4s; }
+.row > div:nth-child(5) { animation-delay: 0.5s; }
+.row > div:nth-child(6) { animation-delay: 0.6s; }
+
+/* Pulse animation for buttons */
+.btn-primary {
+    animation: pulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -50%;
+        top: -50%;
+    }
+    100% {
+        left: 150%;
+        top: 150%;
+    }
+}
+
+/* Animated background */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(45deg, #f3f3f3, #e6e6e6);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+.animated-bg span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--bs-primary);
+    animation: move 25s infinite;
+}
+
+.animated-bg span:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.animated-bg span:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 3s;
+}
+
+.animated-bg span:nth-child(3) {
+    top: 40%;
+    left: 40%;
+    animation-delay: 6s;
+}
+
+@keyframes move {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(100px, 100px) rotate(180deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

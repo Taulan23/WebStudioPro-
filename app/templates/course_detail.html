@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ course.title }}</h1>
+<div class="course-details">
+    <p>{{ course.description }}</p>
+    {% if course.video_url %}
+    <div class="video-container">
+        <iframe width="560" height="315" src="{{ course.video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    {% endif %}
+    <!-- Добавьте здесь дополнительную информацию о курсе -->
+</div>
+{% endblock %}

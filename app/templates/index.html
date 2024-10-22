@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>WebStudioPro</h1>
+
+<section class="technologies">
+    <div class="tech-icons">
+        <div class="tech-icon">
+            <img src="{{ url_for('static', filename='images/python-icon.png') }}" alt="Python">
+            <span>Python</span>
+        </div>
+        <div class="tech-icon">
+            <img src="{{ url_for('static', filename='images/javascript-icon.png') }}" alt="JavaScript">
+            <span>JavaScript</span>
+        </div>
+        <div class="tech-icon">
+            <img src="{{ url_for('static', filename='images/react-icon.png') }}" alt="React">
+            <span>React</span>
+        </div>
+        <div class="tech-icon">
+            <img src="{{ url_for('static', filename='images/nodejs-icon.png') }}" alt="Node.js">
+            <span>Node.js</span>
+        </div>
+        <div class="tech-icon">
+            <img src="{{ url_for('static', filename='images/docker-icon.png') }}" alt="Docker">
+            <span>Docker</span>
+        </div>
+    </div>
+</section>
+
+<section class="popular-courses">
+    <h2>Популярные курсы</h2>
+    <div class="course-grid">
+        {% for course in popular_courses %}
+        <div class="course-card">
+            <div class="video-container">
+                <img src="{{ course.thumbnail_url }}" alt="{{ course.title }}">
+            </div>
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+            <a href="{{ url_for('main.course_detail', course_id=course.id) }}" class="btn">Смотреть курс</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="popular-video-courses">
+    <h2>Популярные видеокурсы</h2>
+    <div class="course-grid">
+        {% for course in popular_video_courses %}
+        <div class="course-card">
+            <div class="video-container">
+                <img src="{{ course.thumbnail_url }}" alt="{{ course.title }}">
+            </div>
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+            <a href="{{ url_for('main.course_detail', course_id=course.id) }}" class="btn">См��треть курс</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">&copy; 2024 WebStudioPro. Все права защищены.</span>
+    </div>
+</footer>
+{% endblock %}
+
+    </main>
+    
+    <!-- Существующие скрипты и закрывающие теги... -->
+</body>
+</html>

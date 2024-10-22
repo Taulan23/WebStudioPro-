@@ -1,0 +1,29 @@
+[project]
+name = "repl-nix-webstudiopro"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.11"
+dependencies = [
+    "email-validator==2.2.0",
+    "flask==2.2.5",
+    "flask-sqlalchemy==3.0.3",
+    "psycopg2-binary>=2.9.10",
+    "flask-login==0.6.2",
+    "flask-wtf==1.1.1",
+    "flask-migrate==4.0.4",
+    "werkzeug==2.2.3",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "2.2.5"
+Flask-WTF = "1.1.1"
+WTForms = "3.0.1"
+Flask-SQLAlchemy = "3.0.3"
+Flask-Login = "0.6.2"
+Werkzeug = "2.2.3"
+Flask-Migrate = "4.0.4"
+email_validator = "2.2.0"
+
+[tool.poetry.scripts]
+flask = "flask.cli:main"

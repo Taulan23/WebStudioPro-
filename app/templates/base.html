@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}WebStudioPro{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <!-- Здесь может быть ваше меню навигации -->
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block footer %}
+    <!-- Здесь может быть стандартный футер, если не переопределен -->
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

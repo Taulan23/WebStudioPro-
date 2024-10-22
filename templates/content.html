@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">{{ content.title }}</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        {% if content.content_type == 'image' %}
+        <img src="{{ url_for('static', filename=content.url) }}" class="img-fluid" alt="{{ content.title }}">
+        {% elif content.content_type == 'video' %}
+        <div class="ratio ratio-16x9">
+            <iframe src="{{ content.url }}" title="{{ content.title }}" allowfullscreen></iframe>
+        </div>
+        {% elif content.content_type == 'presentation' %}
+        <div class="ratio ratio-16x9">
+            <iframe src="{{ content.url }}" title="{{ content.title }}" allowfullscreen></iframe>
+        </div>
+        {% elif content.content_type == 'text' %}
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">{{ content.url }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        <h3>Подробная информация</h3>
+        <p><strong>Тип контента:</strong> {{ content.content_type }}</p>
+        <p><strong>Категория:</strong> {{ content.category }}</p>
+        <p><strong>Описание:</strong> {{ content.description }}</p>
+        
+        {% if content.content_type == 'test' and content.questions %}
+        <h3 class="mt-4">Вопросы теста</h3>
+        {% for question in content.questions %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ question.question }}</h5>
+                <ol>
+                    {% for option in question.options %}
+                    <li>{{ option }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <h3 class="mt-4">Оценить контент</h3>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.rating.label(class="form-label") }}
+                {{ form.rating(class="form-control") }}
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+        
+        <h3 class="mt-4">Оценки</h3>
+        {% if content.ratings %}
+        <ul class="list-group">
+            {% for rating in content.ratings %}
+            <li class="list-group-item">User {{ rating.user.username }} rated: {{ rating.rating }}/5</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No ratings yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

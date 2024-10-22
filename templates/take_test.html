@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ test.title }}</h1>
+<p>{{ test.description }}</p>
+
+<form method="POST">
+    {% for question in test.questions %}
+    <div class="question">
+        <h3>{{ question.text }}</h3>
+        {% for option in question.options %}
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="question_{{ question.id }}" id="option_{{ option.id }}" value="{{ option.id }}" required>
+            <label class="form-check-label" for="option_{{ option.id }}">
+                {{ option.text }}
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Завершить тест</button>
+</form>
+{% endblock %}

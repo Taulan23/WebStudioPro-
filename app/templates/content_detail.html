@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ content.title }}</h1>
+    <p>{{ content.body }}</p>
+    <p>Created at: {{ content.created_at }}</p>
+    <p>Updated at: {{ content.updated_at }}</p>
+{% endblock %}

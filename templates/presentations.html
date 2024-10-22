@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Презентации</h1>
+{% for presentation in presentations %}
+<div class="presentation">
+    <h2>{{ presentation.title }}</h2>
+    <p>{{ presentation.description }}</p>
+    <a href="{{ url_for('main.presentation_detail', presentation_id=presentation.id) }}" class="btn btn-primary">Просмотреть презентацию</a>
+</div>
+{% endfor %}
+{% endblock %}
